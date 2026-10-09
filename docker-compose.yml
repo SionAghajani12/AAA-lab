@@ -1,0 +1,34 @@
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    command: start-dev
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+    ports: ["8080:8080"]
+    volumes: ["keycloak-data:/opt/keycloak/data"]
+
+  loki:
+    image: grafana/loki:3.0.0
+    ports: ["3100:3100"]
+
+  alloy:
+    image: grafana/alloy:latest
+    command: run --server.http.listen-addr=0.0.0.0:12345 /etc/alloy/config.alloy
+    volumes:
+      - ./alloy/config.alloy:/etc/alloy/config.alloy:ro
+      - ./logs:/logs:ro
+    depends_on: [loki]
+
+  grafana:
+    image: grafana/grafana:latest
+    ports: ["3000:3000"]
+    environment:
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Admin
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+    depends_on: [loki]
+
+volumes:
+  keycloak-data:

@@ -1,0 +1,23 @@
+{"time": "2026-10-08T20:03:39+0400", "user": "anonymous", "action": "access:/report", "result": "denied", "ip": "127.0.0.1", "reason": "not_authenticated"}
+{"time": "2026-10-08T20:03:45+0400", "user": "anonymous", "action": "access:/report", "result": "denied", "ip": "127.0.0.1", "reason": "not_authenticated"}
+{"time": "2026-10-08T20:05:46+0400", "user": "anonymous", "action": "access:/report", "result": "denied", "ip": "127.0.0.1", "reason": "not_authenticated"}
+{"time": "2026-10-08T20:07:03+0400", "user": "anonymous", "action": "access:/report", "result": "denied", "ip": "127.0.0.1", "reason": "not_authenticated"}
+{"time": "2026-10-08T20:07:24+0400", "user": "alice", "action": "login", "result": "allowed", "ip": "127.0.0.1", "roles": ["finance-viewer", "default-roles-company", "offline_access", "uma_authorization"]}
+{"time": "2026-10-08T20:07:24+0400", "user": "alice", "action": "view_home", "result": "allowed", "ip": "127.0.0.1"}
+{"time": "2026-10-08T20:07:27+0400", "user": "alice", "action": "view_report_page", "result": "allowed", "ip": "127.0.0.1"}
+{"time": "2026-10-08T20:07:29+0400", "user": "alice", "action": "download_report", "result": "allowed", "ip": "127.0.0.1", "file": "q3_report.csv"}
+{"time": "2026-10-08T20:07:38+0400", "user": "alice", "action": "logout", "result": "allowed", "ip": "127.0.0.1"}
+{"time": "2026-10-08T20:07:47+0400", "user": "anonymous", "action": "access:/report", "result": "denied", "ip": "127.0.0.1", "reason": "not_authenticated"}
+{"time": "2026-10-08T20:08:20+0400", "user": "bob", "action": "login", "result": "allowed", "ip": "127.0.0.1", "roles": ["default-roles-company", "offline_access", "uma_authorization"]}
+{"time": "2026-10-08T20:08:20+0400", "user": "bob", "action": "view_home", "result": "allowed", "ip": "127.0.0.1"}
+{"time": "2026-10-08T20:08:23+0400", "user": "bob", "action": "access:/report", "result": "denied", "ip": "127.0.0.1", "reason": "missing_role", "needed": ["finance-viewer", "finance-admin"]}
+{"time": "2026-10-08T20:08:35+0400", "user": "bob", "action": "access:/admin", "result": "denied", "ip": "127.0.0.1", "reason": "missing_role", "needed": ["finance-admin"]}
+{"time": "2026-10-08T20:08:41+0400", "user": "bob", "action": "view_home", "result": "allowed", "ip": "127.0.0.1"}
+{"time": "2026-10-08T20:08:42+0400", "user": "bob", "action": "logout", "result": "allowed", "ip": "127.0.0.1"}
+{"time": "2026-10-08T20:08:44+0400", "user": "anonymous", "action": "access:/admin", "result": "denied", "ip": "127.0.0.1", "reason": "not_authenticated"}
+{"time": "2026-10-08T20:09:37+0400", "user": "carol", "action": "login", "result": "allowed", "ip": "127.0.0.1", "roles": ["finance-admin", "default-roles-company", "offline_access", "uma_authorization"]}
+{"time": "2026-10-08T20:09:37+0400", "user": "carol", "action": "view_home", "result": "allowed", "ip": "127.0.0.1"}
+{"time": "2026-10-08T20:09:39+0400", "user": "carol", "action": "view_report_page", "result": "allowed", "ip": "127.0.0.1"}
+{"time": "2026-10-08T20:09:41+0400", "user": "carol", "action": "view_admin_page", "result": "allowed", "ip": "127.0.0.1"}
+{"time": "2026-10-08T20:09:48+0400", "user": "carol", "action": "view_home", "result": "allowed", "ip": "127.0.0.1"}
+{"time": "2026-10-08T20:09:49+0400", "user": "carol", "action": "logout", "result": "allowed", "ip": "127.0.0.1"}

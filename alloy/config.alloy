@@ -1,0 +1,27 @@
+local.file_match "audit" {
+  path_targets = [{"__path__" = "/logs/*.log"}]
+}
+
+loki.source.file "audit" {
+  targets    = local.file_match.audit.targets
+  forward_to = [loki.process.audit.receiver]
+}
+
+loki.process "audit" {
+  stage.json {
+    expressions = { user = "user", action = "action", result = "result" }
+  }
+  stage.labels {
+    values = { user = "user", action = "action", result = "result" }
+  }
+  stage.static_labels {
+    values = { job = "finance-app" }
+  }
+  forward_to = [loki.write.default.receiver]
+}
+
+loki.write "default" {
+  endpoint {
+    url = "http://loki:3100/loki/api/v1/push"
+  }
+}
